@@ -1,0 +1,38 @@
+<!-- Include External CSS -->
+<link rel="stylesheet" href="/css/searchJobResultView.css">
+
+<!-- Main Job List Container -->
+<div class="job-main-list p-4 rounded bg-light">
+  <!-- Iterate Through Jobs -->
+  <% for (let job of jobs) { %>
+    <!-- Job List Item -->
+    <div class="job-list-item border mb-4 p-3 rounded">
+      <!-- Employer Logo (if available) -->
+      <% if(job.employer_logo) { %>
+        <div><img class="employer-logo" src="<%= job.employer_logo %>"></div>
+      <% } %>
+      
+      <!-- Employer Name -->
+      <div class="employer-name text-primary"><b><%= job.employer_name %></b></div>
+      
+      <!-- Employer Location -->
+      <div class="employer-location">
+        <span><%= job.job_city %></span>
+        <span><%= job.job_state %></span>
+        <span><%= job.job_country %></span>
+      </div>
+      
+      <!-- Job Title -->
+      <div class="employer-title"><%= job.job_title %></div>
+      
+      <!-- Employer Job Link Section -->
+      <div class="mt-3"></div>
+      
+      <!-- Job Apply Link -->
+      <div class="employer-job-link">
+        <h5 class="text-primary">Link To Apply Job</h5>
+        <a href="<%= job.job_apply_link %>" class="btn btn-primary" target="_blank">Apply Now</a>
+      </div>
+    </div>
+  <% } %>
+</div>

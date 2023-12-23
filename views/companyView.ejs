@@ -1,0 +1,104 @@
+<!-- Interviews Display Section -->
+<div class="w-75 mx-auto mt-5">
+  <div class="row">
+    <!-- Heading for Interviews Section -->
+    <div class="col-6">
+      <h1 class="text-primary">Interviews</h1>
+    </div>
+
+    <!-- Button to Allocate Interview -->
+    <div class="col-6 d-flex justify-content-end">
+      <a
+        href="/company/allocate"
+        type="button"
+        class="btn btn-primary align-self-center"
+        >Allocate Interview</a
+      >
+    </div>
+  </div>
+
+  <!-- Check if there are students with interviews -->
+  <% if(students.length > 0) {%>
+    <!-- Display Interviews in Table -->
+    <div class="mt-3 mb-3">
+      <table class="table table-bordered">
+        <thead class="thead-primary">
+          <tr>
+            <th scope="col">Company</th>
+            <th scope="col">Student</th>
+            <th scope="col">Email</th>
+            <th scope="col">Contact</th>
+            <th scope="col">Batch</th>
+            <th scope="col">Interview Date</th>
+            <th scope="col">Result</th>
+          </tr>
+        </thead>
+
+        <!-- Iterate through students and their interviews -->
+        <tbody id="myTable">
+          <% for(let student of students){%> 
+            <%i=0%> 
+            <% while(i<student.interviews.length){%>
+              <!-- Display Interview Details -->
+              <tr class="row-ref">
+                <th scope="row"><%=student.interviews[i].company%></th>
+                <td><%=student.name%></td>
+                <td><%=student.email%></td>
+                <td><%=student.contactNumber%></td>
+                <td><%=student.batch%></td>
+                <td><%=student.interviews[i].date%></td>
+                <td>
+                  <!-- Form for Updating Interview Status -->
+                  <form
+                    style="
+                      display: flex;
+                      align-items: center;
+                      justify-content: center;
+                    "
+                    action="/company/update-status/<%=student.id%>"
+                    method="post"
+                  >
+                    <!-- Hidden Input for Company Name -->
+                    <input
+                      hidden
+                      type="text"
+                      name="companyName"
+                      value="<%=student.interviews[i].company%>"
+                    />
+
+                    <!-- Dropdown for Interview Status -->
+                    <select
+                      class="form-select"
+                      aria-label="Default select example"
+                      name="companyResult"
+                      id="status"
+                      style="min-width: 130px"
+                    >
+                      <option selected id="select-option">
+                        <%=student.interviews[i].result%>
+                      </option>
+                      <option value="Selected">Selected</option>
+                      <option value="Not Selected">Not Selected</option>
+                      <option value="On Hold">On Hold</option>
+                      <option value="Pending">Pending</option>
+                    </select>
+
+                    <!-- Update Button -->
+                    <button type="submit" class="btn btn-primary btn-small m-2">
+                      Update
+                    </button>
+                  </form>
+                </td>
+              </tr>
+              <%i++%> <%}%> <%}%>
+          </tbody>
+        </table>
+      </div>
+    <%}else{%>
+      <!-- Display Message if No Records Found -->
+      <div class="w-75 mx-auto mt-5">
+        <h2>No Records found</h2>
+      </div>
+    <%}%>
+  </div>
+</div>

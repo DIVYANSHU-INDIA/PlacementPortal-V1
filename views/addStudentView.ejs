@@ -1,0 +1,55 @@
+<!-- Student Creation Form -->
+<form class="w-75 mx-auto mt-4 p-4 border rounded" action="/students/create-student" method="post" style="background-color: #f0f7ff; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+  <!-- Form Heading -->
+  <h3 class="text-center mb-4" style="color: #0056b3;">Add Student</h3>
+
+  <!-- Batch Field -->
+  <div class="mb-3">
+    <label for="batch" class="form-label">Batch</label>
+    <input type="text" class="form-control" id="batch" name="batch" />
+  </div>
+
+  <!-- Student Information Fields -->
+  <div class="mb-3">
+    <label for="name" class="form-label">Name</label>
+    <input type="text" class="form-control" id="name" name="name" />
+  </div>
+  <div class="mb-3">
+    <label for="email" class="form-label">Email address</label>
+    <input type="email" class="form-control" id="email" placeholder="abc@gmail.com" name="email" />
+  </div>
+  <div class="mb-3">
+    <label for="contactNumber" class="form-label">Mobile Number</label>
+    <input type="text" class="form-control" id="contactNumber" name="contactNumber" />
+  </div>
+  <div class="mb-3">
+    <label for="college" class="form-label">College Name</label>
+    <input type="text" class="form-control" id="college" name="college" />
+  </div>
+  <div class="mb-3">
+    <label for="placement" class="form-label">Placement Status</label>
+    <select class="form-select" aria-label="Default select example" name="placement" id="placement">
+      <option value="Placed">Placed</option>
+      <option value="Not Placed">Not Placed</option>
+    </select>
+  </div>
+
+  <!-- Technical Skills Fields -->
+  <div class="mb-3 d-flex justify-content-between">
+    <div class="mb-3">
+      <label for="dsa" class="form-label">DSA</label>
+      <input type="text" class="form-control" id="dsa" name="dsa" />
+    </div>
+    <div class="mb-3">
+      <label for="webd" class="form-label">Web Development</label>
+      <input type="text" class="form-control" id="webd" name="webd" />
+    </div>
+    <div class="mb-3">
+      <label for="react" class="form-label">React</label>
+      <input type="text" class="form-control" id="react" name="react" />
+    </div>
+  </div>
+
+  <!-- Submit Button -->
+  <button type="submit" class="btn btn-primary align-self-center" style="background-color: #0056b3;">Create Student</button>
+</form>
